@@ -22,7 +22,7 @@ module Danger
 
     def lint_if_report_exists(inline_mode:)
       if !report_path.nil? && File.exist?(report_path)
-        report = File.open(report_path)
+        report = File.open(report_path, :encoding => 'UTF-8')
         violations = FlutterAnalyzeParser.violations(report)
         lint_mode(inline_mode: inline_mode, violations: violations)
       else
